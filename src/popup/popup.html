@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prolific Telegram Alerts</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🔬 Prolific Alerts</h1>
+      </header>
+
+      <!-- Status info -->
+      <section id="status">
+        <div id="active-info" class="info-notice">
+          <p>🔔 You'll get notified of new studies via Telegram.</p>
+          <p class="info-detail">
+            Keep your browser on with
+            <strong>app.prolific.com/studies</strong> open in a background tab
+            for the extension to detect new studies.
+          </p>
+        </div>
+
+        <!-- Prolific tab warning -->
+        <div id="prolific-tab-warning" class="warning-notice hidden">
+          <p>⚠️ <strong>Prolific is not open</strong></p>
+          <p class="warning-detail">
+            Open
+            <a href="https://app.prolific.com/studies" target="_blank"
+              >app.prolific.com/studies</a
+            >
+            in a tab to start detecting studies.
+          </p>
+        </div>
+      </section>
+
+      <!-- Settings section -->
+      <section id="settings-section">
+        <div class="settings-card">
+          <h3 class="settings-title">⚙️ Settings</h3>
+
+          <!-- Notifications toggle -->
+          <div class="setting-row setting-row-inline">
+            <span class="setting-label">Notifications</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="notifications-toggle" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <!-- Beep sound toggle -->
+          <div class="setting-row setting-row-inline" id="beep-row">
+            <span class="setting-label">Alert beep sound</span>
+            <div class="beep-row-controls">
+              <button
+                id="beep-try-btn"
+                class="beep-try-btn"
+                title="Play a sample alert sound"
+              >
+                TRY ME
+              </button>
+              <label class="toggle-switch">
+                <input type="checkbox" id="beep-toggle" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Tab Guardian toggle -->
+          <div class="setting-row setting-row-inline" id="tab-guardian-row">
+            <span class="setting-label">
+              Tab Guardian
+              <span class="setting-hint-inline"
+                >Rouvre l'onglet studies toutes les 5 min</span
+              >
+            </span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="tab-guardian-toggle" />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <!-- Tab Guardian reopened sound toggle -->
+          <div
+            class="setting-row setting-row-inline"
+            id="tab-guardian-beep-row"
+          >
+            <span class="setting-label">Son de réouverture</span>
+            <div class="beep-row-controls">
+              <button
+                id="tab-guardian-beep-try-btn"
+                class="beep-try-btn"
+                title="Play the reopened chime"
+              >
+                TRY ME
+              </button>
+              <label class="toggle-switch">
+                <input type="checkbox" id="tab-guardian-beep-toggle" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Min reward slider -->
+          <div class="setting-row" id="min-reward-row">
+            <label for="min-reward-slider" class="setting-label">
+              Minimum reward to notify
+            </label>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="min-reward-slider"
+                min="0"
+                max="30"
+                step="0.5"
+                value="0"
+              />
+              <div class="slider-labels">
+                <span>£0</span>
+                <span id="min-reward-value" class="slider-current"
+                  >£0.00 ($0.00)</span
+                >
+                <span>£30</span>
+              </div>
+            </div>
+            <p class="setting-hint">
+              Studies paying less than this amount will be ignored.
+            </p>
+          </div>
+
+          <!-- Min places slider -->
+          <div class="setting-row" id="min-places-row">
+            <label for="min-places-slider" class="setting-label">
+              Minimum available places
+            </label>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="min-places-slider"
+                min="1"
+                max="100"
+                step="1"
+                value="1"
+              />
+              <div class="slider-labels">
+                <span>1</span>
+                <span id="min-places-value" class="slider-current">1</span>
+                <span>100</span>
+              </div>
+            </div>
+            <p class="setting-hint">
+              Studies with fewer available places will be ignored.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer id="app-footer" class="app-footer">
+        <span id="footer-ext-id" class="footer-ext-id"></span>
+      </footer>
+    </div>
+
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>
